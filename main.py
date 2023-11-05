@@ -44,21 +44,19 @@ def startGame():
                     # Set flag to True when correct guess is made
                     isGuessCorrect = True
 
+                    # Make sure to update top players only on a correct guess
+                    updateTopPlayers(playerName, attempts, topPlayerFile)
+                    print("Top players updated.")
+
             # Catch invalid input
             except ValueError:
                 print("Please enter a valid number.")
-
-        # Make sure the result will not be ranked when the attempt = 0
-        if attempts > 0:
-            updateTopPlayers(playerName, attempts, topPlayerFile)
-            print("Top players updated.")
 
         # Ask if the player wants to play the game again
         playAgain = input("Do you want to play again? (yes/no): ")
         if playAgain != "yes":
             print("Thank you for playing!")
             return  # Exit the function if the player doesn't choose the "yes"
-
 
 # Call the function
 startGame()
